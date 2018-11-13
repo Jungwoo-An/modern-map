@@ -1,21 +1,29 @@
-class ModernMap extends Map {
+class ModernMap<K, V> {
+  private _map: Map<K, V>
   private _limit: number
 
   constructor(limit: number) {
-    super()
-
+    this._map = new Map<K, V>()
     this._limit = limit
   }
 
-  public set(key: any, value: any) {
-    if (this._limit === this.size) {
-      this.delete(this.keys().next())
+  public set(key: K, value: V) {
+    if (this._limit === this._map.size) {
+      this._map.delete(this._map.keys().next().value)
     }
 
-    this.delete(key)
-    this.set(key, value)
+    this._map.delete(key)
+    this._map.set(key, value)
 
     return this
+  }
+
+  public get(key: K) {
+    return this._map.get(key)
+  }
+
+  public get length() {
+    return this._map.size
   }
 }
 
