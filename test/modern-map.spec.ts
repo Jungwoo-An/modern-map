@@ -5,7 +5,7 @@ interface TestData {
   item2: number
 }
 
-test('should usable of syntax like pure object', () => {
+test('syntax like pure object should be usable', () => {
   const map = Map.create()
 
   map[1] = 1
@@ -15,14 +15,22 @@ test('should usable of syntax like pure object', () => {
   expect(map.test).toEqual(2)
 })
 
-test('should usable of in keyword', () => {
+test('in keyword should be usable', () => {
   const map = Map.create()
   map[1] = 1
 
   expect(1 in map).toBeTruthy()
 })
 
-test('should expect return type', () => {
+test('Object.keys should be usable', () => {
+  const map = Map.create()
+  map[1] = 1
+  map[2] = 2
+
+  expect(Object.keys(map)).toEqual(['1', '2'])
+})
+
+test('should be expect return type', () => {
   const map = Map.create<TestData>()
 
   map['item'] = 'item'
@@ -30,7 +38,7 @@ test('should expect return type', () => {
   expect(map.item2).toBeFalsy()
 })
 
-test('should delete by old key', () => {
+test('should be delete old key', () => {
   const map = Map.create(2)
 
   map[1] = 1

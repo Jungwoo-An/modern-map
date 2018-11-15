@@ -11,6 +11,18 @@ class ModernMap {
     var map = new ModernMap(limit)
 
     return new Proxy<any>(map, {
+      getOwnPropertyDescriptor() {
+        return {
+          configurable: true,
+          enumerable: true,
+          writable: true
+        }
+      },
+
+      ownKeys(target) {
+        return target.keys()
+      },
+
       has(target, prop: any) {
         return target.has(prop)
       },
@@ -28,6 +40,10 @@ class ModernMap {
         return target.get(prop)
       }
     })
+  }
+
+  public keys() {
+    return Array.from(this._map.keys())
   }
 
   public has(key: string) {
