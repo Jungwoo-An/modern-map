@@ -1,12 +1,16 @@
-class ModernMap<K, V> {
-  private _map: Map<string, V>
-  private _limit: number
+class ModernMap {
+  private _limit?: number
+  private _map: Map<string, any>
 
-  constructor(limit: number) {
-    this._map = new Map<string, V>()
+  private constructor(limit?: number) {
+    this._map = new Map<string, any>()
     this._limit = limit
+  }
 
-    return new Proxy(this, {
+  public static create<T = any>(limit?: number): Partial<T> {
+    var map = new ModernMap(limit)
+
+    return new Proxy<any>(map, {
       has(target, prop: any) {
         return target.has(prop)
       },
@@ -26,12 +30,12 @@ class ModernMap<K, V> {
     })
   }
 
-  public has(key: K) {
+  public has(key: string) {
     return this._map.has(key.toString())
   }
 
-  public set(key: K, value: V) {
-    if (this._limit === this._map.size) {
+  public set(key: string, value: any) {
+    if (this._limit && this._limit === this._map.size) {
       this._map.delete(this._map.keys().next().value)
     }
 
@@ -43,7 +47,7 @@ class ModernMap<K, V> {
     return this
   }
 
-  public get(key: K) {
+  public get(key: string) {
     return this._map.get(key.toString())
   }
 
