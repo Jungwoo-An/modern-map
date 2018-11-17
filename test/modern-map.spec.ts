@@ -13,6 +13,10 @@ test('syntax like pure object should be usable', () => {
 
   map['test'] = 2
   expect(map.test).toEqual(2)
+
+  delete map[1]
+  expect(map[1]).toBeFalsy()
+  expect(map.length).toEqual(1)
 })
 
 test('in keyword should be usable', () => {

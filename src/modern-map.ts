@@ -38,6 +38,10 @@ class ModernMap {
         }
 
         return target.get(prop)
+      },
+
+      deleteProperty(target, prop: any) {
+        return target.delete(prop)
       }
     })
   }
@@ -46,11 +50,11 @@ class ModernMap {
     return Array.from(this._map.keys())
   }
 
-  public has(key: string) {
+  public has(key: any) {
     return this._map.has(key.toString())
   }
 
-  public set(key: string, value: any) {
+  public set(key: any, value: any) {
     if (this._limit && this._limit === this._map.size) {
       this._map.delete(this._map.keys().next().value)
     }
@@ -63,8 +67,12 @@ class ModernMap {
     return this
   }
 
-  public get(key: string) {
+  public get(key: any) {
     return this._map.get(key.toString())
+  }
+
+  public delete(key: any) {
+    return this._map.delete(key.toString())
   }
 
   public get length() {
