@@ -23,7 +23,7 @@ Parameters:
 - limitSize (optional): Set limit size of modern-map. If not set, will be infinite size.
 
 ```js
-import Map from 'modern-map';
+import Map from 'modern-map'
 
 const obj = Map.create()
 
@@ -43,16 +43,38 @@ obj[key]
 If you using typescript and want to set type of map.
 
 ```ts
-import Map from 'modern-map';
+import Map from 'modern-map'
 
 interface Data {
-  item1: number;
-  item2: boolean;
+  item1: number
+  item2: boolean
 }
 
 const obj = Map.create<Data>() // return type is Partial<Data>
 
-obj.item1 = 0;
+obj.item1 = 0
+```
+
+`Map.length [number]`
+
+Return size of map
+
+```js
+obj.length
+```
+
+`How to use loop?`
+
+same as pure object
+
+```js
+import Map from 'modern-map'
+
+const obj = Map.create()
+
+obj['example'] = 1
+
+Object.keys(obj) // ['example']
 ```
 
 ## Compatibility

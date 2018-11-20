@@ -16,6 +16,7 @@ test('syntax like pure object should be usable', () => {
 
   delete map[1]
   expect(map[1]).toBeFalsy()
+  expect(map.set).toBeTruthy()
   expect(map.length).toEqual(1)
 })
 

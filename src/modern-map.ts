@@ -33,11 +33,7 @@ class ModernMap {
       },
 
       get(target, prop: any) {
-        if (prop === 'length') {
-          return target.length
-        }
-
-        return target.get(prop)
+        return target.get(prop) || target[prop]
       },
 
       deleteProperty(target, prop: any) {

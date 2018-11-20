@@ -1,6 +1,6 @@
 {
   "name": "modern-map",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "modern-map is can limit size and save anything",
   "keywords": [
     "map",
@@ -25,8 +25,8 @@
     "prebuild": "rimraf dist",
     "build": "tsc --module commonjs && rollup -c rollup.config.ts && typedoc --out docs --target es6 --theme minimal --mode file src",
     "start": "rollup -c rollup.config.ts -w",
-    "test": "jest",
-    "test:watch": "jest --watch",
+    "test": "jest --verbose=false",
+    "test:watch": "jest --watch --verbose=false",
     "test:prod": "npm run lint && npm run test -- --coverage --no-cache"
   },
   "jest": {
