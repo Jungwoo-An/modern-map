@@ -1,5 +1,7 @@
 # Modern Map
 
+[![npm version](https://badge.fury.io/js/modern-map.svg)](https://badge.fury.io/js/modern-map)
+
 This is simply, easily, able to limit, similar to pure object
 
 ## Getting started
